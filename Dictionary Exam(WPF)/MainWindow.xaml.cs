@@ -140,11 +140,14 @@ namespace Dictionary_Exam_WPF_
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            using (StreamWriter fstream = new StreamWriter("ListDictionary.txt", false))
+            if(dictionary != null)
             {
-                foreach (var item in dictionary)
+                using (StreamWriter fstream = new StreamWriter("ListDictionary.txt", false))
                 {
-                    fstream.WriteLine(item.nameDictionary);
+                    foreach (var item in dictionary)
+                    {
+                        fstream.WriteLine(item.nameDictionary);
+                    }
                 }
             }
             Environment.Exit(0);
@@ -206,8 +209,15 @@ namespace Dictionary_Exam_WPF_
         }
         private void LoadWords_Click(object sender, RoutedEventArgs e)
         {
-            LoadWords ld = new LoadWords(dictionary);
-            ld.ShowDialog();
+           if(dictionary != null)
+            {
+                LoadWords ld = new LoadWords(dictionary);
+                ld.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("У вас ещё нету словарей.", "Erorr", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void ManageItemMenu_Click(object sender, RoutedEventArgs e)
