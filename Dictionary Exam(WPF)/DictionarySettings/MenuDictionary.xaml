@@ -79,8 +79,7 @@
             </Button.Background>
         </Button>
 
-        <DataGrid x:Name="listWords"  Margin="26,141,29,24" FontFamily="Cascadia Code SemiBold" ItemsSource="{Binding words}" Foreground="#FFCA01FF" FontSize="20" Background="#FFE5E2E2" BorderBrush="#FFCC08EB"  Style="{DynamicResource MaterialDesignDataGrid}" Loaded="DataGrid_Loaded" Cursor="AppStarting" IsSynchronizedWithCurrentItem="true" CanUserAddRows="False">
-        </DataGrid>
+        <DataGrid x:Name="listWords"  Margin="26,141,29,24" FontFamily="Cascadia Code SemiBold" ItemsSource="{Binding words}" Foreground="#FFCA01FF" FontSize="20" Background="#FFE5E2E2" BorderBrush="#FFCC08EB"  Style="{DynamicResource MaterialDesignDataGrid}" Loaded="DataGrid_Loaded" Cursor="AppStarting" IsSynchronizedWithCurrentItem="true" CanUserAddRows="False" GridLinesVisibility="Horizontal" IsReadOnly="True"/>
         <TextBox x:Name="FindTextBox" HorizontalAlignment="Left" Margin="635,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" FontFamily="Cascadia Mono" FontSize="20" Foreground="Black" Background="#FFB20BB6" RenderTransformOrigin="0.264,0.596"/>
         <Button x:Name="FindButton" Content="Find" HorizontalAlignment="Left" Margin="536,51,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold" FontSize="24" Click="ButtonFind_Click" Foreground="#DD000000">
             <Button.Background>
