@@ -1,0 +1,104 @@
+﻿<Window x:Class="Dictionary_Exam_WPF_.MenuDictionary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dictionary_Exam_WPF_"
+        mc:Ignorable="d"
+        Title="Dictionary Menu" Height="450" Width="800" Closing="Window_Closing" Icon="/icons8-словарь-48.png" WindowStartupLocation="CenterScreen">
+    <Grid Height="440" VerticalAlignment="Top">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Background.jpg"/>
+        </Grid.Background>
+        <Label x:Name="nameDictionaryLabel" Content="Name dictionary: " HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold" Foreground="#FFD102F1" FontSize="20" Width="553"/>
+        <TextBox x:Name="WordTextBox" HorizontalAlignment="Left" Margin="26,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" FontFamily="Cascadia Mono" FontSize="20" Foreground="Black" Background="#FFB20BB6">
+        </TextBox>
+        <TextBox x:Name="TranscriptionTextBox" HorizontalAlignment="Left" Margin="178,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" FontFamily="Cascadia Mono" FontSize="20" Foreground="Black" Background="#FFB20BB6"/>
+        <TextBox x:Name="TranslationTextBox" HorizontalAlignment="Left" Margin="360,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" FontFamily="Cascadia Mono" FontSize="20" Foreground="Black" Background="#FFB20BB6"/>
+        <Button x:Name="ButtonAddWord" Content="Add" HorizontalAlignment="Left" Margin="550,94,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold" FontSize="24" Click="ButtonAddWord_Click" Height="39" Width="74" Foreground="#DD000000">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF80027A" Offset="1"/>
+                    <GradientStop Color="#FFE008D6" Offset="0.534"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Menu Height="29" VerticalAlignment="Top" TabIndex="2147483644" Background="{x:Null}" FontFamily="Cascadia Mono" FontSize="14" HorizontalAlignment="Center" Width="559">
+            <MenuItem x:Name="ManegeWords" Header="Manage words" Height="30" >
+                <MenuItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF88299A" Offset="1"/>
+                        <GradientStop Color="#FEC927C9" Offset="0.045"/>
+                    </LinearGradientBrush>
+                </MenuItem.Background>
+                <MenuItem x:Name="RemoveWord" Header="Remove word" Click="RemoveWord_Click"></MenuItem>
+                <MenuItem x:Name="EditWord" Header="Edit word" Click="EditWord_Click"></MenuItem>
+                <MenuItem x:Name="EditTrans" Header="Edit transcription" Click="EditTrans_Click"></MenuItem>
+                <MenuItem x:Name="AddTranslete" Header="Add translete" Click="AddTranslate_Click"></MenuItem>
+                <MenuItem x:Name="DeleteTranslete" Header="Delete translete" Click="DeleteTranslete_Click"></MenuItem>
+                <MenuItem x:Name="EditTranslete" Header="Edit translete" Click="EditTranslete_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="InfoButton" Header="Information" Click="InfoButton_Click" Height="30" >
+                <MenuItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF88299A" Offset="1"/>
+                        <GradientStop Color="#FEC221C2" Offset="0.045"/>
+                    </LinearGradientBrush>
+                </MenuItem.Background>
+            </MenuItem>
+            <MenuItem x:Name="sortButton" Header="Sort dictionary" Click="SortDictionary_Click" Height="31" >
+                <MenuItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF88299A" Offset="1"/>
+                        <GradientStop Color="#FEC221C2" Offset="0.045"/>
+                    </LinearGradientBrush>
+                </MenuItem.Background>
+            </MenuItem>
+            <MenuItem x:Name="BackToMenu" Header="Back to menu" Click="BackToMenu_Click" Height="31" >
+                <MenuItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF88299A" Offset="1"/>
+                        <GradientStop Color="#FEC221C2" Offset="0.045"/>
+                    </LinearGradientBrush>
+                </MenuItem.Background>
+            </MenuItem>
+        </Menu>
+        <Label Content="Word" HorizontalAlignment="Left" Margin="26,67,0,0" VerticalAlignment="Top" Foreground="#FFD102F1" FontFamily="Cascadia Mono" FontSize="20"/>
+        <Label Content="Translation" HorizontalAlignment="Left" Margin="360,67,0,0" VerticalAlignment="Top" Foreground="#FFD102F1" FontFamily="Cascadia Mono" FontSize="20"/>
+        <Label Content="Transcription" HorizontalAlignment="Left" Margin="178,67,0,0" VerticalAlignment="Top" Foreground="#FFD102F1" FontFamily="Cascadia Mono" FontSize="20"/>
+        <Button x:Name="ButtonSave" Content="Save" HorizontalAlignment="Left" Margin="635,94,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold" FontSize="24" Click="ButtonSave_Click" Height="39" Width="89" Foreground="#DD000000" Cursor="Hand">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF80027A" Offset="1"/>
+                    <GradientStop Color="#FFE008D6" Offset="0.534"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+        <DataGrid x:Name="listWords"  Margin="26,141,29,24" FontFamily="Cascadia Code SemiBold" ItemsSource="{Binding words}" Foreground="#FFCA01FF" FontSize="20" Background="#FFE5E2E2" BorderBrush="#FFCC08EB"  Style="{DynamicResource MaterialDesignDataGrid}" Loaded="DataGrid_Loaded" Cursor="AppStarting" IsSynchronizedWithCurrentItem="true" CanUserAddRows="False">
+        </DataGrid>
+        <TextBox x:Name="FindTextBox" HorizontalAlignment="Left" Margin="635,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136" FontFamily="Cascadia Mono" FontSize="20" Foreground="Black" Background="#FFB20BB6" RenderTransformOrigin="0.264,0.596"/>
+        <Button x:Name="FindButton" Content="Find" HorizontalAlignment="Left" Margin="536,51,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold" FontSize="24" Click="ButtonFind_Click" Foreground="#DD000000">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF80027A" Offset="1"/>
+                    <GradientStop Color="#FFE008D6" Offset="0.534"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+    <Window.Resources>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Violet" BorderThickness="2">
+                    <AdornedElementPlaceholder />
+                </Border>
+                <TextBlock Foreground="Red" FontSize="26" FontWeight="Bold">!</TextBlock>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+</Window>

@@ -1,0 +1,21 @@
+Time
+[taim]
+Время
+People
+[`pi:pl]
+Человек, люди
+Work
+[wo:k]
+Работать
+Way
+[wei]
+Путь
+System
+[sistem]
+Система
+Man
+[maen]
+Человек, мужчина, муж
+Part
+[pa:t]
+Часть, роль, детали
